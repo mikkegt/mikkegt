@@ -6,6 +6,8 @@ package main
 type Developer struct {
     Name          string
     Communities   []string
+    Experiences   []string
+    Hobbies       []string
     Cats          []struct {
         Name string
         Role string
@@ -20,12 +22,19 @@ func NewDeveloper() *Developer {
             "WomenWhoGo Tokyo 🦫",
             "42 Tokyo 🎮",
         },
+        Experiences: []string{
+            "System Development 💻",
+            "Infrastructure Management 🛠️",
+            "BI & Data Operations 📊",
+            "Security Product Support 🔐",
+            "Support Center Leadership 🎯",
+        },
         Hobbies: []string{
             "Mountain Climbing 🏔️",
             "Knitting 🧶",
             "Piano 🎹",
             "Tennis 🎾",
-            "Boy Scouts ⛺",
+            "Boy Scouts Leader ⛺",
         },
         Cats: []struct {
             Name string
