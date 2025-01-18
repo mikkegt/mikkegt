@@ -20,6 +20,13 @@ func NewDeveloper() *Developer {
             "WomenWhoGo Tokyo 🦫",
             "42 Tokyo 🎮",
         },
+        Hobbies: []string{
+            "Mountain Climbing 🏔️",
+            "Knitting 🧶",
+            "Piano 🎹",
+            "Tennis 🎾",
+            "Boy Scouts ⛺",
+        },
         Cats: []struct {
             Name string
             Role string
