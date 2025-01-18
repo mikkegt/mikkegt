@@ -56,10 +56,10 @@ func NewDeveloper() *Developer {
 		},
 		Hobbies: []string{
 			"Mountain Climbing 🏔️",
+			"City Walking 🚶‍♀️",
 			"Knitting 🧶",
 			"Piano 🎹",
 			"Tennis 🎾",
-			"Boy Scouts ⛺",
 		},
 		Cats: []struct {
 			Name string
