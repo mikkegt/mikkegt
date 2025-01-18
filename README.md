@@ -31,7 +31,7 @@ func NewDeveloper() *Developer {
         },
         Hobbies: []string {
             "Mountain Climbing 🏔️",
-			"City Walking 🚶‍♀️",
+            "City Walking 🚶‍♀️",
             "Knitting 🧶",
             "Piano 🎹",
             "Tennis 🎾",
