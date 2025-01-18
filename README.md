@@ -15,21 +15,21 @@ type Developer struct {
 }
 
 func NewDeveloper() *Developer {
-    return &Developer{
+    return &Developer {
         Name: "👵 Misato 👵",
         Communities: []string{
             "SingularitySociety 🚀",
             "WomenWhoGo Tokyo 🦫",
             "42 Tokyo 🎮",
         },
-        Experiences: []string{
+        Experiences: []string {
             "System Development 💻",
             "Infrastructure Management 🛠️",
             "BI & Data Operations 📊",
             "Security Product Support 🔐",
             "Support Center Leadership 🎯",
         },
-        Hobbies: []string{
+        Hobbies: []string {
             "Mountain Climbing 🏔️",
             "Knitting 🧶",
             "Piano 🎹",
@@ -40,8 +40,8 @@ func NewDeveloper() *Developer {
             Name string
             Role string
         }{
-            {Name: "Nyan1-Go", Role: "Senior Bug Hunter 🐱"},
-            {Name: "Nyan2-Go", Role: "Chief Nap Officer 🐱"},
+            { Name: "Nyan1-Go", Role: "Senior Bug Hunter 🐱" },
+            { Name: "Nyan2-Go", Role: "Chief Nap Officer 🐱" },
         },
     }
 }
