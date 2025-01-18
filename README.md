@@ -34,7 +34,7 @@ func NewDeveloper() *Developer {
             "Knitting 🧶",
             "Piano 🎹",
             "Tennis 🎾",
-            "Boy Scouts Leader ⛺",
+            "Boy Scouts ⛺",
         },
         Cats: []struct {
             Name string
