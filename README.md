@@ -17,7 +17,7 @@ type Developer struct {
 func NewDeveloper() *Developer {
     return &Developer {
         Name: "👵 Misato 👵",
-        Communities: []string{
+        Communities: []string {
             "SingularitySociety 🚀",
             "WomenWhoGo Tokyo 🦫",
             "42 Tokyo 🎮",
