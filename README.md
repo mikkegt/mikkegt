@@ -23,6 +23,7 @@ func NewDeveloper() *Developer {
             "SingularitySociety 🚀",
             "WomenWhoGo Tokyo 🦫",
             "42 Tokyo 🎮",
+            "Raycast Community Japan 🦝",
         },
         Experiences: []string {
             "System Development 💻",
