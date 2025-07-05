@@ -1,3 +1,5 @@
+![](images/cover.png)
+
 ## Hi there 👋
 
 ```go
