@@ -20,7 +20,13 @@ WINDOW_DAYS_DEFAULT = 30
 TOP_TOOLS = 5
 TOP_SKILLS = 3
 SVG_WIDTH_PX = 800
-SVG_HEIGHT_PX = 360
+SVG_HEIGHT_PX = 480
+ROW_HEIGHT_PX = 26
+TOOLS_BAR_Y_START = 195
+SKILLS_BAR_Y_START = 360
+SPARK_Y_TOP = 440
+SPARK_HEIGHT = 25
+SPARK_FLOOR = SPARK_Y_TOP + SPARK_HEIGHT
 
 
 def list_session_files(projects_dir: Path, cutoff: datetime) -> list[Path]:
@@ -182,7 +188,7 @@ def render_top_section(items: list[tuple[str, int]], y_start: int, max_bar: int)
         return ""
     max_value = max(v for _, v in items)
     rows = [
-        bar_row(label, value, max_value, y_start + i * 22, max_bar)
+        bar_row(label, value, max_value, y_start + i * ROW_HEIGHT_PX, max_bar)
         for i, (label, value) in enumerate(items)
     ]
     return "\n".join(rows)
@@ -190,7 +196,9 @@ def render_top_section(items: list[tuple[str, int]], y_start: int, max_bar: int)
 
 def render_svg(stats: dict, series: list[int], theme: str) -> str:
     """サマリー SVG を組み立てる。"""
-    spark = sparkline_path(series, x0=20, y0=300, w=SVG_WIDTH_PX - 40, h=40)
+    spark = sparkline_path(
+        series, x0=20, y0=SPARK_Y_TOP, w=SVG_WIDTH_PX - 40, h=SPARK_HEIGHT
+    )
     template = THEMES[theme]
     return template.format(
         width=SVG_WIDTH_PX,
@@ -199,8 +207,12 @@ def render_svg(stats: dict, series: list[int], theme: str) -> str:
         tool_calls=stats["tool_call_count"],
         skills=stats["unique_skill_count"],
         window=stats["window_days"],
-        top_tools_svg=render_top_section(stats["top_tools"], y_start=160, max_bar=400),
-        top_skills_svg=render_top_section(stats["top_skills"], y_start=250, max_bar=400),
+        top_tools_svg=render_top_section(
+            stats["top_tools"], y_start=TOOLS_BAR_Y_START, max_bar=400
+        ),
+        top_skills_svg=render_top_section(
+            stats["top_skills"], y_start=SKILLS_BAR_Y_START, max_bar=400
+        ),
         sparkline=spark,
     )
 
@@ -235,38 +247,38 @@ SVG_TEMPLATE_DARK = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {wid
   <rect class="bg" width="{width}" height="{height}" rx="12"/>
 
   <g class="anim">
-    <text x="20" y="32" class="title">🤖 AI Pair Programming with Claude Code</text>
-    <text x="20" y="50" class="subtitle">last {window} days · powered by ~/.claude/projects</text>
+    <text x="20" y="36" class="title">🤖 AI Pair Programming with Claude Code</text>
+    <text x="20" y="58" class="subtitle">last {window} days · powered by ~/.claude/projects</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.1s">
-    <text x="20"  y="100" class="stat-num">{sessions}</text>
-    <text x="20"  y="118" class="stat-label">sessions</text>
-    <text x="220" y="100" class="stat-num">{tool_calls}</text>
-    <text x="220" y="118" class="stat-label">tool calls</text>
-    <text x="460" y="100" class="stat-num">{skills}</text>
-    <text x="460" y="118" class="stat-label">skills used</text>
+    <text x="20"  y="120" class="stat-num">{sessions}</text>
+    <text x="20"  y="142" class="stat-label">sessions</text>
+    <text x="220" y="120" class="stat-num">{tool_calls}</text>
+    <text x="220" y="142" class="stat-label">tool calls</text>
+    <text x="460" y="120" class="stat-num">{skills}</text>
+    <text x="460" y="142" class="stat-label">skills used</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.2s">
-    <text x="20" y="150" class="section">Top tools</text>
+    <text x="20" y="180" class="section">Top tools</text>
     {top_tools_svg}
   </g>
 
   <g class="anim" style="animation-delay: 0.3s">
-    <text x="20" y="240" class="section">Top skills</text>
+    <text x="20" y="345" class="section">Top skills</text>
     {top_skills_svg}
   </g>
 
   <g class="anim" style="animation-delay: 0.4s">
-    <text x="20" y="295" class="section">Daily activity</text>
+    <text x="20" y="430" class="section">Daily activity</text>
     <path class="spark-area" d="{sparkline} L{spark_end_x},{spark_floor} L20,{spark_floor} Z"/>
     <path class="spark" d="{sparkline}">
       <animate attributeName="stroke-dasharray" from="0,2000" to="2000,0" dur="1.4s" fill="freeze"/>
     </path>
   </g>
 </svg>
-""".replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", "340")
+""".replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", str(SPARK_FLOOR))
 
 
 SVG_TEMPLATE_CUTE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" font-family="-apple-system, BlinkMacSystemFont, 'Hiragino Maru Gothic ProN', 'Comic Sans MS', sans-serif">
@@ -312,47 +324,47 @@ SVG_TEMPLATE_CUTE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {wid
   <rect class="bg" width="{width}" height="{height}" rx="22"/>
 
   <use href="#paw" class="paw" x="720" y="14"  width="28" height="28" transform="rotate(20 734 28)"/>
-  <use href="#paw" class="paw" x="755" y="40"  width="20" height="20" transform="rotate(-15 765 50)"/>
-  <use href="#paw" class="paw" x="700" y="320" width="22" height="22" transform="rotate(-10 711 331)"/>
-  <use href="#paw" class="paw" x="740" y="300" width="16" height="16" transform="rotate(25 748 308)"/>
+  <use href="#paw" class="paw" x="755" y="44"  width="20" height="20" transform="rotate(-15 765 54)"/>
+  <use href="#paw" class="paw" x="700" y="430" width="22" height="22" transform="rotate(-10 711 441)"/>
+  <use href="#paw" class="paw" x="740" y="412" width="16" height="16" transform="rotate(25 748 420)"/>
 
   <g class="anim">
-    <text x="20" y="32" class="title">🐾 Coding with Claude (and the cats)</text>
-    <text x="20" y="50" class="subtitle">last {window} days · 🐱 Nyan1-Go &amp; Nyan2-Go supervising</text>
+    <text x="20" y="36" class="title">🐾 Coding with Claude (and the cats)</text>
+    <text x="20" y="58" class="subtitle">last {window} days · 🐱 Nyan1-Go &amp; Nyan2-Go supervising</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.1s">
-    <text x="20"  y="100" class="stat-num">{sessions}</text>
-    <text x="20"  y="118" class="stat-label">sessions ✨</text>
-    <text x="220" y="100" class="stat-num">{tool_calls}</text>
-    <text x="220" y="118" class="stat-label">tool calls 🛠️</text>
-    <text x="460" y="100" class="stat-num">{skills}</text>
-    <text x="460" y="118" class="stat-label">skills used 💖</text>
+    <text x="20"  y="120" class="stat-num">{sessions}</text>
+    <text x="20"  y="142" class="stat-label">sessions ✨</text>
+    <text x="220" y="120" class="stat-num">{tool_calls}</text>
+    <text x="220" y="142" class="stat-label">tool calls 🛠️</text>
+    <text x="460" y="120" class="stat-num">{skills}</text>
+    <text x="460" y="142" class="stat-label">skills used 💖</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.2s">
-    <text x="20" y="150" class="section">🌷 Top tools</text>
+    <text x="20" y="180" class="section">🌷 Top tools</text>
     {top_tools_svg}
   </g>
 
   <g class="anim" style="animation-delay: 0.3s">
-    <text x="20" y="240" class="section">🍡 Top skills</text>
+    <text x="20" y="345" class="section">🍡 Top skills</text>
     {top_skills_svg}
   </g>
 
   <g class="anim" style="animation-delay: 0.4s">
-    <text x="20" y="295" class="section">🌸 Daily activity</text>
+    <text x="20" y="430" class="section">🌸 Daily activity</text>
     <path class="spark-area" d="{sparkline} L{spark_end_x},{spark_floor} L20,{spark_floor} Z"/>
     <path class="spark" d="{sparkline}">
       <animate attributeName="stroke-dasharray" from="0,2000" to="2000,0" dur="1.6s" fill="freeze"/>
     </path>
     <g class="bob">
-      <text x="{spark_end_x}" y="312" font-size="16" text-anchor="middle">🐱</text>
+      <text x="{spark_end_x}" y="455" font-size="18" text-anchor="middle">🐱</text>
     </g>
-    <path class="heart beat" d="M28 333 q-6 -6 -10 -2 q-4 4 0 8 l10 10 l10 -10 q4 -4 0 -8 q-4 -4 -10 2 z" transform="translate(720 0) scale(0.55)"/>
+    <text x="40" y="470" font-size="14" class="heart beat">💖</text>
   </g>
 </svg>
-""".replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", "340")
+""".replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", str(SPARK_FLOOR))
 
 
 THEMES = {
