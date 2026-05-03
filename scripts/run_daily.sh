@@ -16,10 +16,18 @@ python3 scripts/aggregate_ai_usage.py \
   --projects-dir "$PROJECTS_DIR" \
   --json-out data/ai-usage.json \
   --svg-out images/ai-usage.svg \
-  --days "$WINDOW_DAYS"
+  --days "$WINDOW_DAYS" \
+  --theme dark
+
+python3 scripts/aggregate_ai_usage.py \
+  --projects-dir "$PROJECTS_DIR" \
+  --json-out data/ai-usage.json \
+  --svg-out images/ai-usage-cute.svg \
+  --days "$WINDOW_DAYS" \
+  --theme cute
 
 # 差分が無ければコミットしない
-git add data/ai-usage.json images/ai-usage.svg
+git add data/ai-usage.json images/ai-usage.svg images/ai-usage-cute.svg
 if git diff --cached --quiet; then
   echo "no changes"
   exit 0

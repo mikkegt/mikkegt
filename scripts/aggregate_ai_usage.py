@@ -188,10 +188,11 @@ def render_top_section(items: list[tuple[str, int]], y_start: int, max_bar: int)
     return "\n".join(rows)
 
 
-def render_svg(stats: dict, series: list[int]) -> str:
+def render_svg(stats: dict, series: list[int], theme: str) -> str:
     """サマリー SVG を組み立てる。"""
     spark = sparkline_path(series, x0=20, y0=300, w=SVG_WIDTH_PX - 40, h=40)
-    return SVG_TEMPLATE.format(
+    template = THEMES[theme]
+    return template.format(
         width=SVG_WIDTH_PX,
         height=SVG_HEIGHT_PX,
         sessions=stats["session_count"],
@@ -204,7 +205,7 @@ def render_svg(stats: dict, series: list[int]) -> str:
     )
 
 
-SVG_TEMPLATE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+SVG_TEMPLATE_DARK = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
   <style>
     .bg {{ fill: #0d1117; }}
     .title {{ fill: #c9d1d9; font-size: 18px; font-weight: 600; }}
@@ -268,12 +269,105 @@ SVG_TEMPLATE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {
 """.replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", "340")
 
 
+SVG_TEMPLATE_CUTE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" font-family="-apple-system, BlinkMacSystemFont, 'Hiragino Maru Gothic ProN', 'Comic Sans MS', sans-serif">
+  <style>
+    .bg {{ fill: #fff5f9; }}
+    .title {{ fill: #d6336c; font-size: 18px; font-weight: 700; }}
+    .subtitle {{ fill: #b06b8a; font-size: 11px; }}
+    .stat-num {{ fill: #ec4899; font-size: 36px; font-weight: 800; }}
+    .stat-label {{ fill: #b06b8a; font-size: 11px; }}
+    .section {{ fill: #d6336c; font-size: 12px; font-weight: 700; }}
+    .row-label {{ fill: #6b3a52; font-size: 12px; }}
+    .row-value {{ fill: #b06b8a; font-size: 11px; }}
+    .bar {{ fill: url(#barGrad); rx: 7; }}
+    .spark {{ fill: none; stroke: #f472b6; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }}
+    .spark-area {{ fill: url(#sparkGrad); opacity: 0.55; }}
+    .paw {{ fill: #f9c2da; opacity: 0.55; }}
+    .heart {{ fill: #ec4899; }}
+    @keyframes fadein {{ from {{ opacity: 0; transform: translateY(8px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+    @keyframes bob {{ 0%, 100% {{ transform: translateY(0); }} 50% {{ transform: translateY(-2px); }} }}
+    @keyframes beat {{ 0%, 100% {{ transform: scale(1); }} 30% {{ transform: scale(1.25); }} }}
+    .anim {{ animation: fadein 0.6s ease-out both; }}
+    .bob {{ animation: bob 1.8s ease-in-out infinite; transform-origin: center; }}
+    .beat {{ animation: beat 1.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }}
+  </style>
+  <defs>
+    <linearGradient id="barGrad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#f9a8d4"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="sparkGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0"/>
+    </linearGradient>
+    <symbol id="paw" viewBox="0 0 32 32">
+      <circle cx="16" cy="20" r="7"/>
+      <ellipse cx="7" cy="13" rx="3" ry="4"/>
+      <ellipse cx="13" cy="8" rx="3" ry="4"/>
+      <ellipse cx="19" cy="8" rx="3" ry="4"/>
+      <ellipse cx="25" cy="13" rx="3" ry="4"/>
+    </symbol>
+  </defs>
+
+  <rect class="bg" width="{width}" height="{height}" rx="22"/>
+
+  <use href="#paw" class="paw" x="720" y="14"  width="28" height="28" transform="rotate(20 734 28)"/>
+  <use href="#paw" class="paw" x="755" y="40"  width="20" height="20" transform="rotate(-15 765 50)"/>
+  <use href="#paw" class="paw" x="700" y="320" width="22" height="22" transform="rotate(-10 711 331)"/>
+  <use href="#paw" class="paw" x="740" y="300" width="16" height="16" transform="rotate(25 748 308)"/>
+
+  <g class="anim">
+    <text x="20" y="32" class="title">🐾 Coding with Claude (and the cats)</text>
+    <text x="20" y="50" class="subtitle">last {window} days · 🐱 Nyan1-Go &amp; Nyan2-Go supervising</text>
+  </g>
+
+  <g class="anim" style="animation-delay: 0.1s">
+    <text x="20"  y="100" class="stat-num">{sessions}</text>
+    <text x="20"  y="118" class="stat-label">sessions ✨</text>
+    <text x="220" y="100" class="stat-num">{tool_calls}</text>
+    <text x="220" y="118" class="stat-label">tool calls 🛠️</text>
+    <text x="460" y="100" class="stat-num">{skills}</text>
+    <text x="460" y="118" class="stat-label">skills used 💖</text>
+  </g>
+
+  <g class="anim" style="animation-delay: 0.2s">
+    <text x="20" y="150" class="section">🌷 Top tools</text>
+    {top_tools_svg}
+  </g>
+
+  <g class="anim" style="animation-delay: 0.3s">
+    <text x="20" y="240" class="section">🍡 Top skills</text>
+    {top_skills_svg}
+  </g>
+
+  <g class="anim" style="animation-delay: 0.4s">
+    <text x="20" y="295" class="section">🌸 Daily activity</text>
+    <path class="spark-area" d="{sparkline} L{spark_end_x},{spark_floor} L20,{spark_floor} Z"/>
+    <path class="spark" d="{sparkline}">
+      <animate attributeName="stroke-dasharray" from="0,2000" to="2000,0" dur="1.6s" fill="freeze"/>
+    </path>
+    <g class="bob">
+      <text x="{spark_end_x}" y="312" font-size="16" text-anchor="middle">🐱</text>
+    </g>
+    <path class="heart beat" d="M28 333 q-6 -6 -10 -2 q-4 4 0 8 l10 10 l10 -10 q4 -4 0 -8 q-4 -4 -10 2 z" transform="translate(720 0) scale(0.55)"/>
+  </g>
+</svg>
+""".replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", "340")
+
+
+THEMES = {
+    "dark": SVG_TEMPLATE_DARK,
+    "cute": SVG_TEMPLATE_CUTE,
+}
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--projects-dir", type=Path, required=True)
     parser.add_argument("--json-out", type=Path, required=True)
     parser.add_argument("--svg-out", type=Path, required=True)
     parser.add_argument("--days", type=int, default=WINDOW_DAYS_DEFAULT)
+    parser.add_argument("--theme", choices=sorted(THEMES), default="dark")
     return parser.parse_args()
 
 
@@ -287,9 +381,9 @@ def main() -> int:
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.svg_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(json.dumps(stats, ensure_ascii=False, indent=2))
-    args.svg_out.write_text(render_svg(stats, series))
+    args.svg_out.write_text(render_svg(stats, series, args.theme))
     print(
-        f"sessions={stats['session_count']} "
+        f"theme={args.theme} sessions={stats['session_count']} "
         f"tool_calls={stats['tool_call_count']} "
         f"skills={stats['unique_skill_count']}",
         file=sys.stderr,

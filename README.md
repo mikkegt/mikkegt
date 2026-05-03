@@ -6,6 +6,8 @@
 
 ![](./images/ai-usage.svg)
 
+![](./images/ai-usage-cute.svg)
+
 ```go
 package main
 
