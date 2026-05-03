@@ -4,6 +4,8 @@
 
 ![](./profile-3d-contrib/profile-gitblock.svg)
 
+![](./images/ai-usage.svg)
+
 ```go
 package main
 
