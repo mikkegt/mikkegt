@@ -53,7 +53,7 @@
   <g class="anim" style="animation-delay: 0.1s">
     <text x="20"  y="120" class="stat-num">65</text>
     <text x="20"  y="142" class="stat-label">sessions ✨</text>
-    <text x="220" y="120" class="stat-num">3719</text>
+    <text x="220" y="120" class="stat-num">3738</text>
     <text x="220" y="142" class="stat-label">tool calls 🛠️</text>
     <text x="460" y="120" class="stat-num">7</text>
     <text x="460" y="142" class="stat-label">skills used 💖</text>
@@ -61,11 +61,11 @@
 
   <g class="anim" style="animation-delay: 0.2s">
     <text x="20" y="180" class="section">🌷 Top tools</text>
-    <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1545</text>
-<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="262.8" class="bar"><animate attributeName="width" from="0" to="262.8" dur="1.2s" fill="freeze"/></rect><text x="472.8" y="221" class="row-value">1015</text>
-<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="148.1" class="bar"><animate attributeName="width" from="0" to="148.1" dur="1.2s" fill="freeze"/></rect><text x="358.1" y="247" class="row-value">572</text>
-<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="44.0" class="bar"><animate attributeName="width" from="0" to="44.0" dur="1.2s" fill="freeze"/></rect><text x="254.0" y="273" class="row-value">170</text>
-<text x="20" y="299" class="row-label">Grep</text><rect x="200" y="287" height="14" width="31.3" class="bar"><animate attributeName="width" from="0" to="31.3" dur="1.2s" fill="freeze"/></rect><text x="241.3" y="299" class="row-value">121</text>
+    <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1549</text>
+<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="266.0" class="bar"><animate attributeName="width" from="0" to="266.0" dur="1.2s" fill="freeze"/></rect><text x="476.0" y="221" class="row-value">1030</text>
+<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="147.7" class="bar"><animate attributeName="width" from="0" to="147.7" dur="1.2s" fill="freeze"/></rect><text x="357.7" y="247" class="row-value">572</text>
+<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="43.9" class="bar"><animate attributeName="width" from="0" to="43.9" dur="1.2s" fill="freeze"/></rect><text x="253.9" y="273" class="row-value">170</text>
+<text x="20" y="299" class="row-label">Grep</text><rect x="200" y="287" height="14" width="31.2" class="bar"><animate attributeName="width" from="0" to="31.2" dur="1.2s" fill="freeze"/></rect><text x="241.2" y="299" class="row-value">121</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.3s">
@@ -77,8 +77,8 @@
 
   <g class="anim" style="animation-delay: 0.4s">
     <text x="20" y="430" class="section">🌸 Daily activity</text>
-    <path class="spark-area" d="M20.0,464.7 L45.3,464.0 L70.7,458.6 L96.0,465.0 L121.3,440.0 L146.7,463.4 L172.0,463.2 L197.3,448.1 L222.7,458.6 L248.0,464.5 L273.3,455.7 L298.7,443.1 L324.0,454.6 L349.3,454.7 L374.7,449.4 L400.0,449.9 L425.3,465.0 L450.7,459.4 L476.0,462.6 L501.3,455.1 L526.7,454.6 L552.0,462.0 L577.3,452.8 L602.7,458.9 L628.0,453.7 L653.3,460.4 L678.7,458.0 L704.0,455.2 L729.3,447.2 L754.7,443.3 L780.0,456.2 L780,465 L20,465 Z"/>
-    <path class="spark" d="M20.0,464.7 L45.3,464.0 L70.7,458.6 L96.0,465.0 L121.3,440.0 L146.7,463.4 L172.0,463.2 L197.3,448.1 L222.7,458.6 L248.0,464.5 L273.3,455.7 L298.7,443.1 L324.0,454.6 L349.3,454.7 L374.7,449.4 L400.0,449.9 L425.3,465.0 L450.7,459.4 L476.0,462.6 L501.3,455.1 L526.7,454.6 L552.0,462.0 L577.3,452.8 L602.7,458.9 L628.0,453.7 L653.3,460.4 L678.7,458.0 L704.0,455.2 L729.3,447.2 L754.7,443.3 L780.0,456.2">
+    <path class="spark-area" d="M20.0,465.0 L45.3,458.6 L70.7,465.0 L96.0,440.0 L121.3,463.4 L146.7,463.2 L172.0,448.1 L197.3,458.6 L222.7,464.5 L248.0,455.7 L273.3,443.1 L298.7,454.6 L324.0,454.7 L349.3,449.4 L374.7,449.9 L400.0,465.0 L425.3,459.4 L450.7,462.6 L476.0,455.1 L501.3,454.6 L526.7,462.0 L552.0,452.8 L577.3,458.9 L602.7,453.7 L628.0,460.4 L653.3,458.0 L678.7,455.2 L704.0,447.2 L729.3,443.3 L754.7,456.2 L780.0,463.5 L780,465 L20,465 Z"/>
+    <path class="spark" d="M20.0,465.0 L45.3,458.6 L70.7,465.0 L96.0,440.0 L121.3,463.4 L146.7,463.2 L172.0,448.1 L197.3,458.6 L222.7,464.5 L248.0,455.7 L273.3,443.1 L298.7,454.6 L324.0,454.7 L349.3,449.4 L374.7,449.9 L400.0,465.0 L425.3,459.4 L450.7,462.6 L476.0,455.1 L501.3,454.6 L526.7,462.0 L552.0,452.8 L577.3,458.9 L602.7,453.7 L628.0,460.4 L653.3,458.0 L678.7,455.2 L704.0,447.2 L729.3,443.3 L754.7,456.2 L780.0,463.5">
       <animate attributeName="stroke-dasharray" from="0,2000" to="2000,0" dur="1.6s" fill="freeze"/>
     </path>
     <g class="bob">
