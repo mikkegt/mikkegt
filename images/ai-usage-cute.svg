@@ -51,34 +51,34 @@
   </g>
 
   <g class="anim" style="animation-delay: 0.1s">
-    <text x="20"  y="120" class="stat-num">76</text>
+    <text x="20"  y="120" class="stat-num">75</text>
     <text x="20"  y="142" class="stat-label">sessions ✨</text>
-    <text x="220" y="120" class="stat-num">3904</text>
+    <text x="220" y="120" class="stat-num">3614</text>
     <text x="220" y="142" class="stat-label">tool calls 🛠️</text>
-    <text x="460" y="120" class="stat-num">7</text>
+    <text x="460" y="120" class="stat-num">5</text>
     <text x="460" y="142" class="stat-label">skills used 💖</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.2s">
     <text x="20" y="180" class="section">🌷 Top tools</text>
-    <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1656</text>
-<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="243.5" class="bar"><animate attributeName="width" from="0" to="243.5" dur="1.2s" fill="freeze"/></rect><text x="453.5" y="221" class="row-value">1008</text>
-<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="150.2" class="bar"><animate attributeName="width" from="0" to="150.2" dur="1.2s" fill="freeze"/></rect><text x="360.2" y="247" class="row-value">622</text>
-<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="42.8" class="bar"><animate attributeName="width" from="0" to="42.8" dur="1.2s" fill="freeze"/></rect><text x="252.8" y="273" class="row-value">177</text>
-<text x="20" y="299" class="row-label">Grep</text><rect x="200" y="287" height="14" width="28.3" class="bar"><animate attributeName="width" from="0" to="28.3" dur="1.2s" fill="freeze"/></rect><text x="238.3" y="299" class="row-value">117</text>
+    <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1567</text>
+<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="238.2" class="bar"><animate attributeName="width" from="0" to="238.2" dur="1.2s" fill="freeze"/></rect><text x="448.2" y="221" class="row-value">933</text>
+<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="141.2" class="bar"><animate attributeName="width" from="0" to="141.2" dur="1.2s" fill="freeze"/></rect><text x="351.2" y="247" class="row-value">553</text>
+<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="43.7" class="bar"><animate attributeName="width" from="0" to="43.7" dur="1.2s" fill="freeze"/></rect><text x="253.7" y="273" class="row-value">171</text>
+<text x="20" y="299" class="row-label">Grep</text><rect x="200" y="287" height="14" width="21.2" class="bar"><animate attributeName="width" from="0" to="21.2" dur="1.2s" fill="freeze"/></rect><text x="231.2" y="299" class="row-value">83</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.3s">
     <text x="20" y="345" class="section">🍡 Top skills</text>
     <text x="20" y="360" class="row-label">humanize</text><rect x="200" y="348" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="360" class="row-value">3</text>
 <text x="20" y="386" class="row-label">schedule</text><rect x="200" y="374" height="14" width="266.7" class="bar"><animate attributeName="width" from="0" to="266.7" dur="1.2s" fill="freeze"/></rect><text x="476.7" y="386" class="row-value">2</text>
-<text x="20" y="412" class="row-label">review</text><rect x="200" y="400" height="14" width="133.3" class="bar"><animate attributeName="width" from="0" to="133.3" dur="1.2s" fill="freeze"/></rect><text x="343.3" y="412" class="row-value">1</text>
+<text x="20" y="412" class="row-label">review-code</text><rect x="200" y="400" height="14" width="133.3" class="bar"><animate attributeName="width" from="0" to="133.3" dur="1.2s" fill="freeze"/></rect><text x="343.3" y="412" class="row-value">1</text>
   </g>
 
   <g class="anim" style="animation-delay: 0.4s">
     <text x="20" y="430" class="section">🌸 Daily activity</text>
-    <path class="spark-area" d="M20.0,465.0 L45.3,463.2 L70.7,462.9 L96.0,445.7 L121.3,457.7 L146.7,464.5 L172.0,454.4 L197.3,440.0 L222.7,453.1 L248.0,453.3 L273.3,447.2 L298.7,447.7 L324.0,465.0 L349.3,458.6 L374.7,462.3 L400.0,453.7 L425.3,453.2 L450.7,461.5 L476.0,451.1 L501.3,458.0 L526.7,452.1 L552.0,459.7 L577.3,457.0 L602.7,453.8 L628.0,444.6 L653.3,440.3 L678.7,454.9 L704.0,463.3 L729.3,458.0 L754.7,451.7 L780.0,449.8 L780,465 L20,465 Z"/>
-    <path class="spark" d="M20.0,465.0 L45.3,463.2 L70.7,462.9 L96.0,445.7 L121.3,457.7 L146.7,464.5 L172.0,454.4 L197.3,440.0 L222.7,453.1 L248.0,453.3 L273.3,447.2 L298.7,447.7 L324.0,465.0 L349.3,458.6 L374.7,462.3 L400.0,453.7 L425.3,453.2 L450.7,461.5 L476.0,451.1 L501.3,458.0 L526.7,452.1 L552.0,459.7 L577.3,457.0 L602.7,453.8 L628.0,444.6 L653.3,440.3 L678.7,454.9 L704.0,463.3 L729.3,458.0 L754.7,451.7 L780.0,449.8">
+    <path class="spark-area" d="M20.0,465.0 L45.3,462.9 L70.7,445.7 L96.0,457.7 L121.3,464.5 L146.7,454.4 L172.0,440.0 L197.3,453.1 L222.7,453.3 L248.0,447.2 L273.3,447.7 L298.7,465.0 L324.0,458.6 L349.3,462.3 L374.7,453.7 L400.0,453.2 L425.3,461.5 L450.7,451.1 L476.0,458.0 L501.3,452.1 L526.7,459.7 L552.0,457.0 L577.3,453.8 L602.7,444.6 L628.0,440.3 L653.3,454.9 L678.7,463.3 L704.0,458.0 L729.3,451.7 L754.7,449.7 L780.0,459.0 L780,465 L20,465 Z"/>
+    <path class="spark" d="M20.0,465.0 L45.3,462.9 L70.7,445.7 L96.0,457.7 L121.3,464.5 L146.7,454.4 L172.0,440.0 L197.3,453.1 L222.7,453.3 L248.0,447.2 L273.3,447.7 L298.7,465.0 L324.0,458.6 L349.3,462.3 L374.7,453.7 L400.0,453.2 L425.3,461.5 L450.7,451.1 L476.0,458.0 L501.3,452.1 L526.7,459.7 L552.0,457.0 L577.3,453.8 L602.7,444.6 L628.0,440.3 L653.3,454.9 L678.7,463.3 L704.0,458.0 L729.3,451.7 L754.7,449.7 L780.0,459.0">
       <animate attributeName="stroke-dasharray" from="0,2000" to="2000,0" dur="1.6s" fill="freeze"/>
     </path>
     <g class="bob">
