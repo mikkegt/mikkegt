@@ -17,7 +17,9 @@ jobs:
       - uses: actions/checkout@v6
       - uses: yoshi389111/github-profile-3d-contrib@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # private リポジトリの言語も集計するため PAT を優先。
+          # PROFILE_3D_TOKEN 未登録なら従来の GITHUB_TOKEN に自動フォールバック (公開のみ集計)。
+          GITHUB_TOKEN: ${{ secrets.PROFILE_3D_TOKEN || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
       - name: Commit & Push
         run: |
