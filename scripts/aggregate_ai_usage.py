@@ -367,9 +367,58 @@ SVG_TEMPLATE_CUTE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {wid
 """.replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", str(SPARK_FLOOR))
 
 
+SVG_TEMPLATE_PIXEL_SWEETS = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" font-family="'Courier New', ui-monospace, monospace">
+  <style>
+    .bg {{ fill: #14182b; }}
+    .title {{ fill: #ffd23f; font-size: 17px; font-weight: 700; letter-spacing: 1px; }}
+    .subtitle {{ fill: #6c7293; font-size: 11px; }}
+    .stat-num {{ fill: #41ead4; font-size: 34px; font-weight: 700; }}
+    .stat-label {{ fill: #ff5d8f; font-size: 11px; font-weight: 700; }}
+    .section {{ fill: #ffd23f; font-size: 12px; font-weight: 700; }}
+    .row-label {{ fill: #e7ecff; font-size: 12px; }}
+    .row-value {{ fill: #6c7293; font-size: 11px; }}
+    .bar {{ fill: url(#barGrad); rx: 0; }}
+    .spark {{ fill: none; stroke: #41ead4; stroke-width: 3; stroke-linejoin: miter; }}
+    .spark-area {{ fill: url(#sparkGrad); opacity: 0.4; }}
+    .px {{ fill: #ff5d8f; }}
+  </style>
+  <defs>
+    <linearGradient id="barGrad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#ff5d8f"/><stop offset="100%" stop-color="#ffd23f"/>
+    </linearGradient>
+    <linearGradient id="sparkGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#41ead4" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#41ead4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect class="bg" width="{width}" height="{height}"/>
+  <rect class="px" x="0" y="0" width="{width}" height="6"/>
+  <rect class="px" x="0" y="474" width="{width}" height="6"/>
+  <text x="20" y="38" font-size="19">🍰<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.4s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
+  <text x="48" y="38" class="title">Claude Code Usage</text>
+  <text x="20" y="58" class="subtitle">last {window} days · ~/.claude/projects</text>
+  <text x="20"  y="120" class="stat-num">{sessions}</text>
+  <text x="20"  y="142" class="stat-label">SESSIONS</text>
+  <text x="220" y="120" class="stat-num">{tool_calls}</text>
+  <text x="220" y="142" class="stat-label">TOOL CALLS</text>
+  <text x="460" y="120" class="stat-num">{skills}</text>
+  <text x="460" y="142" class="stat-label">SKILLS</text>
+  <text x="20" y="180" class="section">▮ TOP TOOLS</text>
+  {top_tools_svg}
+  <text x="20" y="345" class="section">▮ TOP SKILLS</text>
+  {top_skills_svg}
+  <text x="20" y="430" class="section">▮ DAILY ACTIVITY</text>
+  <path class="spark-area" d="{sparkline} L{spark_end_x},{spark_floor} L20,{spark_floor} Z"/>
+  <path class="spark" d="{sparkline}"/>
+  <text x="{spark_end_x}" y="464" font-size="22" text-anchor="end">🍭<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.6s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
+</svg>
+""".replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", str(SPARK_FLOOR))
+
+
 THEMES = {
     "dark": SVG_TEMPLATE_DARK,
     "cute": SVG_TEMPLATE_CUTE,
+    "pixel_sweets": SVG_TEMPLATE_PIXEL_SWEETS,
 }
 
 

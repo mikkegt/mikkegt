@@ -17,17 +17,10 @@ python3 scripts/aggregate_ai_usage.py \
   --json-out data/ai-usage.json \
   --svg-out images/ai-usage.svg \
   --days "$WINDOW_DAYS" \
-  --theme dark
-
-python3 scripts/aggregate_ai_usage.py \
-  --projects-dir "$PROJECTS_DIR" \
-  --json-out data/ai-usage.json \
-  --svg-out images/ai-usage-cute.svg \
-  --days "$WINDOW_DAYS" \
-  --theme cute
+  --theme pixel_sweets
 
 # 差分が無ければコミットしない
-git add data/ai-usage.json images/ai-usage.svg images/ai-usage-cute.svg
+git add data/ai-usage.json images/ai-usage.svg
 if git diff --cached --quiet; then
   echo "no changes"
   exit 0
@@ -36,4 +29,17 @@ fi
 git -c user.name="ai-usage-bot" \
     -c user.email="kawano.misato+aiusage@gmail.com" \
     commit -m "chore: update AI usage stats"
-git push origin main
+
+# リモートが自動コミット(3D contrib)で先行しているのが日常なので、
+# push 前に必ず取り込む。ff-only が無理なら merge --no-ff (rebase/force は禁止)。
+for attempt in 1 2 3; do
+  git fetch origin main
+  git merge --ff-only origin/main 2>/dev/null \
+    || git merge --no-ff origin/main -m "merge: integrate origin updates"
+  if git push origin main; then
+    exit 0
+  fi
+  echo "push attempt $attempt failed, retrying..." >&2
+done
+echo "push failed after retries" >&2
+exit 1

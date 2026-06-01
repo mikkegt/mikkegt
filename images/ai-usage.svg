@@ -1,67 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" font-family="'Courier New', ui-monospace, monospace">
   <style>
-    .bg { fill: #0d1117; }
-    .title { fill: #c9d1d9; font-size: 18px; font-weight: 600; }
-    .subtitle { fill: #8b949e; font-size: 11px; }
-    .stat-num { fill: #58a6ff; font-size: 36px; font-weight: 700; }
-    .stat-label { fill: #8b949e; font-size: 11px; }
-    .section { fill: #c9d1d9; font-size: 12px; font-weight: 600; }
-    .row-label { fill: #c9d1d9; font-size: 12px; }
-    .row-value { fill: #8b949e; font-size: 11px; }
-    .bar { fill: url(#barGrad); rx: 3; }
-    .spark { fill: none; stroke: #3fb950; stroke-width: 2; }
-    .spark-area { fill: url(#sparkGrad); opacity: 0.5; }
-    @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .anim { animation: fadein 0.6s ease-out both; }
+    .bg { fill: #14182b; }
+    .title { fill: #ffd23f; font-size: 17px; font-weight: 700; letter-spacing: 1px; }
+    .subtitle { fill: #6c7293; font-size: 11px; }
+    .stat-num { fill: #41ead4; font-size: 34px; font-weight: 700; }
+    .stat-label { fill: #ff5d8f; font-size: 11px; font-weight: 700; }
+    .section { fill: #ffd23f; font-size: 12px; font-weight: 700; }
+    .row-label { fill: #e7ecff; font-size: 12px; }
+    .row-value { fill: #6c7293; font-size: 11px; }
+    .bar { fill: url(#barGrad); rx: 0; }
+    .spark { fill: none; stroke: #41ead4; stroke-width: 3; stroke-linejoin: miter; }
+    .spark-area { fill: url(#sparkGrad); opacity: 0.4; }
+    .px { fill: #ff5d8f; }
   </style>
   <defs>
     <linearGradient id="barGrad" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0%" stop-color="#58a6ff"/>
-      <stop offset="100%" stop-color="#3fb950"/>
+      <stop offset="0%" stop-color="#ff5d8f"/><stop offset="100%" stop-color="#ffd23f"/>
     </linearGradient>
     <linearGradient id="sparkGrad" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0%" stop-color="#3fb950" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#3fb950" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#41ead4" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#41ead4" stop-opacity="0"/>
     </linearGradient>
   </defs>
-
-  <rect class="bg" width="800" height="480" rx="12"/>
-
-  <g class="anim">
-    <text x="20" y="36" class="title">🤖 AI Pair Programming with Claude Code</text>
-    <text x="20" y="58" class="subtitle">last 30 days · powered by ~/.claude/projects</text>
-  </g>
-
-  <g class="anim" style="animation-delay: 0.1s">
-    <text x="20"  y="120" class="stat-num">60</text>
-    <text x="20"  y="142" class="stat-label">sessions</text>
-    <text x="220" y="120" class="stat-num">3637</text>
-    <text x="220" y="142" class="stat-label">tool calls</text>
-    <text x="460" y="120" class="stat-num">4</text>
-    <text x="460" y="142" class="stat-label">skills used</text>
-  </g>
-
-  <g class="anim" style="animation-delay: 0.2s">
-    <text x="20" y="180" class="section">Top tools</text>
-    <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1541</text>
-<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="237.0" class="bar"><animate attributeName="width" from="0" to="237.0" dur="1.2s" fill="freeze"/></rect><text x="447.0" y="221" class="row-value">913</text>
-<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="170.3" class="bar"><animate attributeName="width" from="0" to="170.3" dur="1.2s" fill="freeze"/></rect><text x="380.3" y="247" class="row-value">656</text>
-<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="53.2" class="bar"><animate attributeName="width" from="0" to="53.2" dur="1.2s" fill="freeze"/></rect><text x="263.2" y="273" class="row-value">205</text>
-<text x="20" y="299" class="row-label">TaskUpdate</text><rect x="200" y="287" height="14" width="34.0" class="bar"><animate attributeName="width" from="0" to="34.0" dur="1.2s" fill="freeze"/></rect><text x="244.0" y="299" class="row-value">131</text>
-  </g>
-
-  <g class="anim" style="animation-delay: 0.3s">
-    <text x="20" y="345" class="section">Top skills</text>
-    <text x="20" y="360" class="row-label">humanize</text><rect x="200" y="348" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="360" class="row-value">5</text>
+  <rect class="bg" width="800" height="480"/>
+  <rect class="px" x="0" y="0" width="800" height="6"/>
+  <rect class="px" x="0" y="474" width="800" height="6"/>
+  <text x="20" y="38" font-size="19">🍰<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.4s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
+  <text x="48" y="38" class="title">Claude Code Usage</text>
+  <text x="20" y="58" class="subtitle">last 30 days · ~/.claude/projects</text>
+  <text x="20"  y="120" class="stat-num">64</text>
+  <text x="20"  y="142" class="stat-label">SESSIONS</text>
+  <text x="220" y="120" class="stat-num">3791</text>
+  <text x="220" y="142" class="stat-label">TOOL CALLS</text>
+  <text x="460" y="120" class="stat-num">4</text>
+  <text x="460" y="142" class="stat-label">SKILLS</text>
+  <text x="20" y="180" class="section">▮ TOP TOOLS</text>
+  <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1625</text>
+<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="231.4" class="bar"><animate attributeName="width" from="0" to="231.4" dur="1.2s" fill="freeze"/></rect><text x="441.4" y="221" class="row-value">940</text>
+<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="169.4" class="bar"><animate attributeName="width" from="0" to="169.4" dur="1.2s" fill="freeze"/></rect><text x="379.4" y="247" class="row-value">688</text>
+<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="51.9" class="bar"><animate attributeName="width" from="0" to="51.9" dur="1.2s" fill="freeze"/></rect><text x="261.9" y="273" class="row-value">211</text>
+<text x="20" y="299" class="row-label">TaskUpdate</text><rect x="200" y="287" height="14" width="32.2" class="bar"><animate attributeName="width" from="0" to="32.2" dur="1.2s" fill="freeze"/></rect><text x="242.2" y="299" class="row-value">131</text>
+  <text x="20" y="345" class="section">▮ TOP SKILLS</text>
+  <text x="20" y="360" class="row-label">humanize</text><rect x="200" y="348" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="360" class="row-value">5</text>
 <text x="20" y="386" class="row-label">review-code</text><rect x="200" y="374" height="14" width="160.0" class="bar"><animate attributeName="width" from="0" to="160.0" dur="1.2s" fill="freeze"/></rect><text x="370.0" y="386" class="row-value">2</text>
 <text x="20" y="412" class="row-label">update-config</text><rect x="200" y="400" height="14" width="80.0" class="bar"><animate attributeName="width" from="0" to="80.0" dur="1.2s" fill="freeze"/></rect><text x="290.0" y="412" class="row-value">1</text>
-  </g>
-
-  <g class="anim" style="animation-delay: 0.4s">
-    <text x="20" y="430" class="section">Daily activity</text>
-    <path class="spark-area" d="M20.0,464.4 L45.3,453.7 L70.7,444.4 L96.0,440.0 L121.3,454.8 L146.7,463.3 L172.0,457.9 L197.3,451.6 L222.7,449.6 L248.0,458.8 L273.3,463.9 L298.7,457.6 L324.0,461.0 L349.3,463.1 L374.7,451.2 L400.0,458.8 L425.3,449.5 L450.7,456.6 L476.0,462.1 L501.3,453.3 L526.7,462.4 L552.0,441.8 L577.3,446.1 L602.7,460.1 L628.0,464.3 L653.3,464.0 L678.7,462.4 L704.0,449.9 L729.3,458.4 L754.7,464.2 L780.0,456.1 L780,465 L20,465 Z"/>
-    <path class="spark" d="M20.0,464.4 L45.3,453.7 L70.7,444.4 L96.0,440.0 L121.3,454.8 L146.7,463.3 L172.0,457.9 L197.3,451.6 L222.7,449.6 L248.0,458.8 L273.3,463.9 L298.7,457.6 L324.0,461.0 L349.3,463.1 L374.7,451.2 L400.0,458.8 L425.3,449.5 L450.7,456.6 L476.0,462.1 L501.3,453.3 L526.7,462.4 L552.0,441.8 L577.3,446.1 L602.7,460.1 L628.0,464.3 L653.3,464.0 L678.7,462.4 L704.0,449.9 L729.3,458.4 L754.7,464.2 L780.0,456.1">
-      <animate attributeName="stroke-dasharray" from="0,2000" to="2000,0" dur="1.4s" fill="freeze"/>
-    </path>
-  </g>
+  <text x="20" y="430" class="section">▮ DAILY ACTIVITY</text>
+  <path class="spark-area" d="M20.0,461.0 L45.3,444.4 L70.7,440.0 L96.0,454.8 L121.3,463.3 L146.7,457.9 L172.0,451.6 L197.3,449.6 L222.7,458.8 L248.0,463.9 L273.3,457.6 L298.7,461.0 L324.0,463.1 L349.3,451.2 L374.7,458.8 L400.0,449.5 L425.3,456.6 L450.7,462.1 L476.0,453.3 L501.3,462.4 L526.7,441.8 L552.0,446.1 L577.3,460.1 L602.7,464.3 L628.0,464.0 L653.3,462.4 L678.7,449.9 L704.0,458.4 L729.3,464.2 L754.7,456.1 L780.0,450.3 L780,465 L20,465 Z"/>
+  <path class="spark" d="M20.0,461.0 L45.3,444.4 L70.7,440.0 L96.0,454.8 L121.3,463.3 L146.7,457.9 L172.0,451.6 L197.3,449.6 L222.7,458.8 L248.0,463.9 L273.3,457.6 L298.7,461.0 L324.0,463.1 L349.3,451.2 L374.7,458.8 L400.0,449.5 L425.3,456.6 L450.7,462.1 L476.0,453.3 L501.3,462.4 L526.7,441.8 L552.0,446.1 L577.3,460.1 L602.7,464.3 L628.0,464.0 L653.3,462.4 L678.7,449.9 L704.0,458.4 L729.3,464.2 L754.7,456.1 L780.0,450.3"/>
+  <text x="780" y="464" font-size="22" text-anchor="end">🍭<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.6s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
 </svg>
