@@ -9,48 +9,20 @@
 ```go
 package main
 
-type Developer struct {
-    Name          string
-    Communities   []string
-    Experiences   []string
-    Hobbies       []string
-    Cats          []struct {
-        Name string
-        Role string
-    }
-}
-
-func NewDeveloper() *Developer {
-    return &Developer {
-        Name: "Misato Kawano 👵",
-        Communities: []string {
-            "SingularitySociety 🚀",
-            "WomenWhoGo Tokyo 🦫",
-            "42 Tokyo 🎮",
-            "Raycast Community Japan 🦝",
-        },
-        Experiences: []string {
-            "System Development 💻",
-            "Infrastructure Management 🛠️",
-            "BI & Data Operations 📊",
-            "Security Product Support 🔐",
-            "Support Center Leadership 🎯",
-        },
-        Hobbies: []string {
-            "Mountain Climbing 🏔️",
-            "City Walking 🚶‍♀️",
-            "Knitting 🧶",
-            "Piano 🎹",
-            "Tennis 🎾",
-        },
-        Cats: []struct {
-            Name string
-            Role string
-        }{
-            { Name: "Nyan1-Go", Role: "Senior Bug Hunter 🐱" },
-            { Name: "Nyan2-Go", Role: "Chief Nap Officer 🐱" },
-        },
-    }
+// Misato Kawano — 20+ yrs in IT, still runs `git commit` for fun
+var Misato = Engineer{
+	Now: []string{
+		"🔮 AI Engineer — prompt design / RAG / LLM eval",
+		"📚 Re-learning CS @ 42 Tokyo — C/C++ systems programming (HTTP server)",
+		"🐏 Living in Claude Code as a daily driver (Skill author)",
+	},
+	Experience:  "20+ yrs — Dev / Infra / Data / Support / Security",
+	Domains:     []string{"Automotive", "Finance", "SI", "Security products"},
+	Languages:   []string{"C", "C++", "Go", "C#", "Python", "TypeScript", "Java", "SQL"},
+	Cloud:       []string{"Azure", "OCI", "AWS"},
+	Data:        []string{"PostgreSQL", "Oracle", "Snowflake"},
+	Communities: []string{"Singularity Society 🚀", "Women Who Go Tokyo 🦫", "42 Tokyo 🎮"},
+	OSS:         []string{"ownplate — QA & dev (Vue / Tailwind / Firebase)"},
 }
 ```
 
