@@ -28,24 +28,24 @@
   <text x="20" y="38" font-size="19">🍰<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.4s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
   <text x="48" y="38" class="title">Claude Code Usage</text>
   <text x="20" y="58" class="subtitle">last 30 days · ~/.claude/projects</text>
-  <text x="20"  y="120" class="stat-num">64</text>
+  <text x="20"  y="120" class="stat-num">60</text>
   <text x="20"  y="142" class="stat-label">SESSIONS</text>
-  <text x="220" y="120" class="stat-num">3834</text>
+  <text x="220" y="120" class="stat-num">3525</text>
   <text x="220" y="142" class="stat-label">TOOL CALLS</text>
   <text x="460" y="120" class="stat-num">4</text>
   <text x="460" y="142" class="stat-label">SKILLS</text>
   <text x="20" y="180" class="section">▮ TOP TOOLS</text>
-  <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1647</text>
-<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="230.0" class="bar"><animate attributeName="width" from="0" to="230.0" dur="1.2s" fill="freeze"/></rect><text x="440.0" y="221" class="row-value">947</text>
-<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="169.5" class="bar"><animate attributeName="width" from="0" to="169.5" dur="1.2s" fill="freeze"/></rect><text x="379.5" y="247" class="row-value">698</text>
-<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="51.5" class="bar"><animate attributeName="width" from="0" to="51.5" dur="1.2s" fill="freeze"/></rect><text x="261.5" y="273" class="row-value">212</text>
-<text x="20" y="299" class="row-label">TaskUpdate</text><rect x="200" y="287" height="14" width="31.8" class="bar"><animate attributeName="width" from="0" to="31.8" dur="1.2s" fill="freeze"/></rect><text x="241.8" y="299" class="row-value">131</text>
+  <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">1485</text>
+<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="229.2" class="bar"><animate attributeName="width" from="0" to="229.2" dur="1.2s" fill="freeze"/></rect><text x="439.2" y="221" class="row-value">851</text>
+<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="178.6" class="bar"><animate attributeName="width" from="0" to="178.6" dur="1.2s" fill="freeze"/></rect><text x="388.6" y="247" class="row-value">663</text>
+<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="55.5" class="bar"><animate attributeName="width" from="0" to="55.5" dur="1.2s" fill="freeze"/></rect><text x="265.5" y="273" class="row-value">206</text>
+<text x="20" y="299" class="row-label">TaskUpdate</text><rect x="200" y="287" height="14" width="31.0" class="bar"><animate attributeName="width" from="0" to="31.0" dur="1.2s" fill="freeze"/></rect><text x="241.0" y="299" class="row-value">115</text>
   <text x="20" y="345" class="section">▮ TOP SKILLS</text>
   <text x="20" y="360" class="row-label">humanize</text><rect x="200" y="348" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="1.2s" fill="freeze"/></rect><text x="610.0" y="360" class="row-value">5</text>
-<text x="20" y="386" class="row-label">review-code</text><rect x="200" y="374" height="14" width="160.0" class="bar"><animate attributeName="width" from="0" to="160.0" dur="1.2s" fill="freeze"/></rect><text x="370.0" y="386" class="row-value">2</text>
-<text x="20" y="412" class="row-label">update-config</text><rect x="200" y="400" height="14" width="80.0" class="bar"><animate attributeName="width" from="0" to="80.0" dur="1.2s" fill="freeze"/></rect><text x="290.0" y="412" class="row-value">1</text>
+<text x="20" y="386" class="row-label">update-config</text><rect x="200" y="374" height="14" width="160.0" class="bar"><animate attributeName="width" from="0" to="160.0" dur="1.2s" fill="freeze"/></rect><text x="370.0" y="386" class="row-value">2</text>
+<text x="20" y="412" class="row-label">review-code</text><rect x="200" y="400" height="14" width="80.0" class="bar"><animate attributeName="width" from="0" to="80.0" dur="1.2s" fill="freeze"/></rect><text x="290.0" y="412" class="row-value">1</text>
   <text x="20" y="430" class="section">▮ DAILY ACTIVITY</text>
-  <path class="spark-area" d="M20.0,465.0 L45.3,444.4 L70.7,440.0 L96.0,454.8 L121.3,463.3 L146.7,457.9 L172.0,451.6 L197.3,449.6 L222.7,458.8 L248.0,463.9 L273.3,457.6 L298.7,461.0 L324.0,463.1 L349.3,451.2 L374.7,458.8 L400.0,449.5 L425.3,456.6 L450.7,462.1 L476.0,453.3 L501.3,462.4 L526.7,441.8 L552.0,446.1 L577.3,460.1 L602.7,464.3 L628.0,464.0 L653.3,462.4 L678.7,449.9 L704.0,458.4 L729.3,464.2 L754.7,456.1 L780.0,446.3 L780,465 L20,465 Z"/>
-  <path class="spark" d="M20.0,465.0 L45.3,444.4 L70.7,440.0 L96.0,454.8 L121.3,463.3 L146.7,457.9 L172.0,451.6 L197.3,449.6 L222.7,458.8 L248.0,463.9 L273.3,457.6 L298.7,461.0 L324.0,463.1 L349.3,451.2 L374.7,458.8 L400.0,449.5 L425.3,456.6 L450.7,462.1 L476.0,453.3 L501.3,462.4 L526.7,441.8 L552.0,446.1 L577.3,460.1 L602.7,464.3 L628.0,464.0 L653.3,462.4 L678.7,449.9 L704.0,458.4 L729.3,464.2 L754.7,456.1 L780.0,446.3"/>
+  <path class="spark-area" d="M20.0,464.5 L45.3,440.0 L70.7,454.8 L96.0,463.3 L121.3,457.9 L146.7,451.6 L172.0,449.6 L197.3,458.8 L222.7,463.9 L248.0,457.6 L273.3,461.0 L298.7,463.1 L324.0,451.2 L349.3,458.8 L374.7,449.5 L400.0,456.6 L425.3,462.1 L450.7,453.3 L476.0,462.4 L501.3,441.8 L526.7,446.1 L552.0,460.1 L577.3,464.3 L602.7,464.0 L628.0,462.4 L653.3,449.9 L678.7,458.4 L704.0,464.2 L729.3,456.1 L754.7,445.2 L780.0,449.7 L780,465 L20,465 Z"/>
+  <path class="spark" d="M20.0,464.5 L45.3,440.0 L70.7,454.8 L96.0,463.3 L121.3,457.9 L146.7,451.6 L172.0,449.6 L197.3,458.8 L222.7,463.9 L248.0,457.6 L273.3,461.0 L298.7,463.1 L324.0,451.2 L349.3,458.8 L374.7,449.5 L400.0,456.6 L425.3,462.1 L450.7,453.3 L476.0,462.4 L501.3,441.8 L526.7,446.1 L552.0,460.1 L577.3,464.3 L602.7,464.0 L628.0,462.4 L653.3,449.9 L678.7,458.4 L704.0,464.2 L729.3,456.1 L754.7,445.2 L780.0,449.7"/>
   <text x="780" y="464" font-size="22" text-anchor="end">🍭<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.6s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
 </svg>
