@@ -9,14 +9,14 @@
 ```go
 package main
 
-// Misato Kawano — 20+ yrs in IT, still runs `git commit` for fun
+// Misato Kawano — 25+ yrs in IT, still runs `git commit` for fun
 var Misato = Engineer{
 	Now: []string{
 		"🔮 AI Engineer — prompt design / RAG / LLM eval",
 		"📚 Re-learning CS @ 42 Tokyo — C/C++ systems programming (HTTP server)",
 		"🐏 Living in Claude Code as a daily driver (Skill author)",
 	},
-	Experience:  "20+ yrs — Dev / Infra / Data / Support / Security",
+	Experience:  "25+ yrs — Dev / Infra / Data / Support / Security",
 	Domains:     []string{"Automotive", "Finance", "SI", "Security products"},
 	Languages:   []string{"C", "C++", "Go", "C#", "Python", "TypeScript", "Java", "SQL"},
 	Cloud:       []string{"Azure", "OCI", "AWS"},
