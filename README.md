@@ -29,6 +29,7 @@ var Misato = Engineer{
 ## Certifications
 
 [![Claude 101](https://img.shields.io/badge/Anthropic%20Education-Claude%20101-D97757)](https://verify.skilljar.com/c/h7i9yzocbmpn)
+[![Claude Code 101](https://img.shields.io/badge/Anthropic%20Education-Claude%20Code%20101-D97757)](https://verify.skilljar.com/c/hmku23v54ear)
 
 <!--
 **mikkegt/mikkegt** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
