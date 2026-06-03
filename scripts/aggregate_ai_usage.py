@@ -11,6 +11,7 @@
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
@@ -27,6 +28,23 @@ SKILLS_BAR_Y_START = 360
 SPARK_Y_TOP = 440
 SPARK_HEIGHT = 25
 SPARK_FLOOR = SPARK_Y_TOP + SPARK_HEIGHT
+# バーが伸びるアニメ時間。GitHub の README はスクロール検知できず読込時に1回だけ
+# 再生されるので、到達前に終わり切らないようゆっくりめにしている。
+BAR_ANIM_DURATION_S = 2.5
+
+JST = timezone(timedelta(hours=9))
+DEFAULT_SKILLS_DIR = "~/.claude/skills"
+# スキルは Custom(自作) / Plugin の2カテゴリで集計する。
+# 組み込みコマンド (/exit /model 等) は「使い方のアピール」にならないので分類対象外。
+CATEGORY_LABELS = {"local": "Custom", "plugin": "Plugin"}
+CATEGORY_ORDER = ("local", "plugin")
+# コマンド/スキルのカテゴリ別バー (③) のレイアウト
+CATEGORY_BAR_Y_START = 351
+# 活動リズム(時間帯, ①) のレイアウト
+RHYTHM_Y_BASELINE = 458
+RHYTHM_HEIGHT = 26
+RHYTHM_X0 = 20
+RHYTHM_LABEL_HOURS = (0, 6, 12, 18, 23)
 
 
 def list_session_files(projects_dir: Path, cutoff: datetime) -> list[Path]:
@@ -44,16 +62,18 @@ def list_session_files(projects_dir: Path, cutoff: datetime) -> list[Path]:
     return files
 
 
-def parse_tool_calls(jsonl_path: Path) -> list[dict]:
-    """JSONL から tool_use エントリを抽出する。"""
-    calls = []
+def parse_file(jsonl_path: Path) -> tuple[list[dict], list[dict]]:
+    """JSONL を1度読み、tool_use 呼び出しとスラッシュコマンドの両方を返す。"""
+    calls: list[dict] = []
+    commands: list[dict] = []
     try:
         with jsonl_path.open() as f:
             for line in f:
                 calls.extend(extract_calls_from_line(line))
+                commands.extend(extract_commands_from_line(line))
     except (OSError, json.JSONDecodeError) as e:
         print(f"warn: skip {jsonl_path}: {e}", file=sys.stderr)
-    return calls
+    return calls, commands
 
 
 def extract_calls_from_line(line: str) -> list[dict]:
@@ -90,6 +110,88 @@ def build_call(content_item: dict, timestamp: str | None) -> dict:
     return {"tool": name, "skill": skill, "timestamp": timestamp}
 
 
+def extract_commands_from_line(line: str) -> list[dict]:
+    """ユーザーが打ったスラッシュコマンド (/foo) を1行から取り出す。
+
+    本物のコマンドは content が文字列で <command-message> を含む user メッセージ。
+    tool_result (content が list) の中に紛れ込んだ <command-name> 文字列は拾わない。
+    """
+    line = line.strip()
+    if not line or "<command-name>" not in line:
+        return []
+    try:
+        obj = json.loads(line)
+    except json.JSONDecodeError:
+        return []
+    msg = obj.get("message")
+    if not isinstance(msg, dict):
+        return []
+    content = msg.get("content")
+    if not isinstance(content, str) or "<command-message>" not in content:
+        return []
+    match = re.search(r"<command-name>(/[^<]+)</command-name>", content)
+    if not match:
+        return []
+    return [{"name": match.group(1).strip(), "timestamp": obj.get("timestamp")}]
+
+
+def parse_ts(ts: str | None) -> datetime | None:
+    """ISO8601 文字列を aware な datetime に。失敗時は None。"""
+    if not isinstance(ts, str):
+        return None
+    try:
+        return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def categorize_skill_tool(skill: str) -> str:
+    """Skill ツール経由のスキルを自作/プラグインに分類。"""
+    return "plugin" if ":" in skill else "local"
+
+
+def categorize_command(name: str, local_skills: set[str]) -> str | None:
+    """スラッシュコマンドを Custom/Plugin に分類。組み込みコマンドは None で除外。"""
+    base = name.lstrip("/")
+    if ":" in base:
+        return "plugin"
+    if base in local_skills:
+        return "local"
+    return None
+
+
+def category_counts(
+    calls: list[dict], commands: list[dict], cutoff: datetime, local_skills: set[str]
+) -> Counter:
+    """期間内のスキル/コマンド呼び出しをカテゴリ別に数える。"""
+    counts: Counter = Counter()
+    for call in calls:
+        if call["skill"] and _within(call.get("timestamp"), cutoff):
+            counts[categorize_skill_tool(call["skill"])] += 1
+    for cmd in commands:
+        if not _within(cmd.get("timestamp"), cutoff):
+            continue
+        cat = categorize_command(cmd["name"], local_skills)
+        if cat:
+            counts[cat] += 1
+    return counts
+
+
+def hourly_buckets(calls: list[dict], cutoff: datetime) -> list[int]:
+    """期間内の tool 呼び出しを JST の時間帯 (0-23) ごとに数える。"""
+    hours = [0] * 24
+    for call in calls:
+        dt = parse_ts(call.get("timestamp"))
+        if dt is not None and dt >= cutoff:
+            hours[dt.astimezone(JST).hour] += 1
+    return hours
+
+
+def _within(ts: str | None, cutoff: datetime) -> bool:
+    dt = parse_ts(ts)
+    return dt is not None and dt >= cutoff
+
+
 def daily_buckets(calls: list[dict], cutoff: datetime) -> dict[str, int]:
     """日付 (YYYY-MM-DD) → 呼び出し数 の辞書を返す。"""
     buckets: dict[str, int] = defaultdict(int)
@@ -102,25 +204,25 @@ def daily_buckets(calls: list[dict], cutoff: datetime) -> dict[str, int]:
 
 def call_to_day(call: dict, cutoff: datetime) -> str | None:
     """call.timestamp を日付文字列に正規化。期間外は None。"""
-    ts = call.get("timestamp")
-    if not isinstance(ts, str):
-        return None
-    try:
-        dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
-    except ValueError:
-        return None
-    if dt < cutoff:
+    dt = parse_ts(call.get("timestamp"))
+    if dt is None or dt < cutoff:
         return None
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%d")
 
 
-def aggregate(session_files: list[Path], cutoff: datetime) -> dict:
+def aggregate(
+    session_files: list[Path], cutoff: datetime, local_skills: set[str]
+) -> dict:
     """全集計を1つの dict にまとめる。"""
     all_calls: list[dict] = []
+    all_commands: list[dict] = []
     for f in session_files:
-        all_calls.extend(parse_tool_calls(f))
+        calls, commands = parse_file(f)
+        all_calls.extend(calls)
+        all_commands.extend(commands)
     tool_counts = Counter(c["tool"] for c in all_calls)
     skill_counts = Counter(c["skill"] for c in all_calls if c["skill"])
+    cats = category_counts(all_calls, all_commands, cutoff, local_skills)
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "window_days": (datetime.now(timezone.utc) - cutoff).days,
@@ -130,6 +232,9 @@ def aggregate(session_files: list[Path], cutoff: datetime) -> dict:
         "unique_skill_count": len(skill_counts),
         "top_tools": tool_counts.most_common(TOP_TOOLS),
         "top_skills": skill_counts.most_common(TOP_SKILLS),
+        "categories": {k: cats.get(k, 0) for k in CATEGORY_ORDER},
+        "command_total": sum(cats.values()),
+        "hourly": hourly_buckets(all_calls, cutoff),
         "daily": dict(daily_buckets(all_calls, cutoff)),
     }
 
@@ -168,7 +273,7 @@ def bar_row(label: str, value: int, max_value: int, y: int, max_bar: int) -> str
         f'<text x="20" y="{y}" class="row-label">{safe_label}</text>'
         f'<rect x="200" y="{y - 12}" height="14" width="{width:.1f}" '
         f'class="bar"><animate attributeName="width" from="0" to="{width:.1f}" '
-        f'dur="1.2s" fill="freeze"/></rect>'
+        f'dur="{BAR_ANIM_DURATION_S}s" fill="freeze"/></rect>'
         f'<text x="{210 + width:.1f}" y="{y}" class="row-value">{value}</text>'
     )
 
@@ -194,6 +299,41 @@ def render_top_section(items: list[tuple[str, int]], y_start: int, max_bar: int)
     return "\n".join(rows)
 
 
+def render_category_section(categories: dict[str, int]) -> str:
+    """自作/プラグイン/組み込みの3カテゴリ別バーを描画 (③)。"""
+    items = [(CATEGORY_LABELS[k], categories.get(k, 0)) for k in CATEGORY_ORDER]
+    return render_top_section(items, y_start=CATEGORY_BAR_Y_START, max_bar=400)
+
+
+def render_hour_rhythm(hourly: list[int]) -> str:
+    """時間帯 (0-23 JST) 別の活動リズムを縦バーで描画 (①)。"""
+    peak = max(hourly) or 1
+    slot = (SVG_WIDTH_PX - 2 * RHYTHM_X0) / 24
+    bar_w = slot * 0.7
+    bars = [_rhythm_bar(h, v, peak, slot, bar_w) for h, v in enumerate(hourly)]
+    labels = [
+        f'<text x="{RHYTHM_X0 + h * slot + bar_w / 2:.1f}" '
+        f'y="{RHYTHM_Y_BASELINE + 12}" class="rhythm-label" '
+        f'text-anchor="middle">{h}</text>'
+        for h in RHYTHM_LABEL_HOURS
+    ]
+    return "\n".join(bars + labels)
+
+
+def _rhythm_bar(hour: int, value: int, peak: int, slot: float, bar_w: float) -> str:
+    bar_h = (value / peak) * RHYTHM_HEIGHT
+    x = RHYTHM_X0 + hour * slot
+    y = RHYTHM_Y_BASELINE - bar_h
+    return (
+        f'<rect class="rhythm-bar" x="{x:.1f}" y="{y:.1f}" '
+        f'width="{bar_w:.1f}" height="{bar_h:.1f}">'
+        f'<animate attributeName="height" from="0" to="{bar_h:.1f}" '
+        f'dur="{BAR_ANIM_DURATION_S}s" fill="freeze"/>'
+        f'<animate attributeName="y" from="{RHYTHM_Y_BASELINE}" to="{y:.1f}" '
+        f'dur="{BAR_ANIM_DURATION_S}s" fill="freeze"/></rect>'
+    )
+
+
 def render_svg(stats: dict, series: list[int], theme: str) -> str:
     """サマリー SVG を組み立てる。"""
     spark = sparkline_path(
@@ -206,6 +346,7 @@ def render_svg(stats: dict, series: list[int], theme: str) -> str:
         sessions=stats["session_count"],
         tool_calls=stats["tool_call_count"],
         skills=stats["unique_skill_count"],
+        commands=stats["command_total"],
         window=stats["window_days"],
         top_tools_svg=render_top_section(
             stats["top_tools"], y_start=TOOLS_BAR_Y_START, max_bar=400
@@ -213,6 +354,8 @@ def render_svg(stats: dict, series: list[int], theme: str) -> str:
         top_skills_svg=render_top_section(
             stats["top_skills"], y_start=SKILLS_BAR_Y_START, max_bar=400
         ),
+        category_svg=render_category_section(stats["categories"]),
+        rhythm_svg=render_hour_rhythm(stats["hourly"]),
         sparkline=spark,
     )
 
@@ -378,8 +521,8 @@ SVG_TEMPLATE_PIXEL_SWEETS = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="
     .row-label {{ fill: #e7ecff; font-size: 12px; }}
     .row-value {{ fill: #6c7293; font-size: 11px; }}
     .bar {{ fill: url(#barGrad); rx: 0; }}
-    .spark {{ fill: none; stroke: #41ead4; stroke-width: 3; stroke-linejoin: miter; }}
-    .spark-area {{ fill: url(#sparkGrad); opacity: 0.4; }}
+    .rhythm-bar {{ fill: #41ead4; }}
+    .rhythm-label {{ fill: #6c7293; font-size: 9px; }}
     .px {{ fill: #ff5d8f; }}
   </style>
   <defs>
@@ -401,18 +544,16 @@ SVG_TEMPLATE_PIXEL_SWEETS = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="
   <text x="20"  y="142" class="stat-label">SESSIONS</text>
   <text x="220" y="120" class="stat-num">{tool_calls}</text>
   <text x="220" y="142" class="stat-label">TOOL CALLS</text>
-  <text x="460" y="120" class="stat-num">{skills}</text>
+  <text x="460" y="120" class="stat-num">{commands}</text>
   <text x="460" y="142" class="stat-label">SKILLS</text>
   <text x="20" y="180" class="section">▮ TOP TOOLS</text>
   {top_tools_svg}
-  <text x="20" y="345" class="section">▮ TOP SKILLS</text>
-  {top_skills_svg}
-  <text x="20" y="430" class="section">▮ DAILY ACTIVITY</text>
-  <path class="spark-area" d="{sparkline} L{spark_end_x},{spark_floor} L20,{spark_floor} Z"/>
-  <path class="spark" d="{sparkline}"/>
-  <text x="{spark_end_x}" y="464" font-size="22" text-anchor="end">🍭<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.6s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
+  <text x="20" y="336" class="section">▮ SKILLS · custom vs plugin</text>
+  {category_svg}
+  <text x="20" y="412" class="section">▮ ACTIVITY · hour of day (JST)</text>
+  {rhythm_svg}
 </svg>
-""".replace("{spark_end_x}", str(SVG_WIDTH_PX - 20)).replace("{spark_floor}", str(SPARK_FLOOR))
+"""
 
 
 THEMES = {
@@ -422,6 +563,14 @@ THEMES = {
 }
 
 
+def load_local_skills(skills_dir: str) -> set[str]:
+    """~/.claude/skills 配下のディレクトリ名 = 自作スキル名の集合を返す。"""
+    path = Path(skills_dir).expanduser()
+    if not path.is_dir():
+        return set()
+    return {d.name for d in path.iterdir() if d.is_dir()}
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--projects-dir", type=Path, required=True)
@@ -429,6 +578,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--svg-out", type=Path, required=True)
     parser.add_argument("--days", type=int, default=WINDOW_DAYS_DEFAULT)
     parser.add_argument("--theme", choices=sorted(THEMES), default="dark")
+    parser.add_argument("--skills-dir", default=DEFAULT_SKILLS_DIR)
     return parser.parse_args()
 
 
@@ -437,7 +587,8 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(days=args.days)
     files = list_session_files(args.projects_dir.expanduser(), cutoff)
-    stats = aggregate(files, cutoff)
+    local_skills = load_local_skills(args.skills_dir)
+    stats = aggregate(files, cutoff, local_skills)
     series = daily_series(stats["daily"], cutoff, now)
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.svg_out.parent.mkdir(parents=True, exist_ok=True)
@@ -446,7 +597,7 @@ def main() -> int:
     print(
         f"theme={args.theme} sessions={stats['session_count']} "
         f"tool_calls={stats['tool_call_count']} "
-        f"skills={stats['unique_skill_count']}",
+        f"commands={stats['command_total']} categories={stats['categories']}",
         file=sys.stderr,
     )
     return 0
