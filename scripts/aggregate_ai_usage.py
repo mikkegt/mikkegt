@@ -548,7 +548,7 @@ SVG_TEMPLATE_PIXEL_SWEETS = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="
   <text x="460" y="142" class="stat-label">SKILLS</text>
   <text x="20" y="180" class="section">▮ TOP TOOLS</text>
   {top_tools_svg}
-  <text x="20" y="336" class="section">▮ SKILLS · custom vs plugin</text>
+  <text x="20" y="336" class="section">▮ SKILLS</text>
   {category_svg}
   <text x="20" y="412" class="section">▮ ACTIVITY · hour of day (JST)</text>
   {rhythm_svg}
