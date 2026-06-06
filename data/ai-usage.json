@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-06-05T18:00:08.634930+00:00",
+  "generated_at": "2026-06-06T19:20:27.578975+00:00",
   "window_days": 30,
-  "session_count": 77,
-  "tool_call_count": 4101,
-  "unique_tool_count": 22,
-  "unique_skill_count": 5,
+  "session_count": 82,
+  "tool_call_count": 4252,
+  "unique_tool_count": 25,
+  "unique_skill_count": 6,
   "top_tools": [
     [
       "Bash",
-      1772
+      1837
     ],
     [
       "Read",
-      959
+      978
     ],
     [
       "Edit",
-      803
+      850
     ],
     [
       "Write",
-      224
+      227
     ],
     [
       "TaskUpdate",
@@ -30,41 +30,41 @@
   "top_skills": [
     [
       "humanize",
-      5
+      6
     ],
     [
       "commit-commands:commit-push-pr",
       4
     ],
     [
-      "update-config",
+      "review-code",
       2
     ]
   ],
   "categories": {
-    "local": 15,
-    "plugin": 17
+    "local": 17,
+    "plugin": 18
   },
-  "command_total": 32,
+  "command_total": 35,
   "hourly": [
     174,
-    163,
-    197,
+    184,
+    203,
+    90,
+    69,
     57,
-    37,
-    20,
-    0,
+    17,
     1,
     5,
     30,
-    117,
+    115,
     99,
-    120,
+    111,
     166,
-    232,
-    192,
-    289,
-    293,
+    237,
+    181,
+    246,
+    281,
     211,
     177,
     95,
@@ -73,10 +73,10 @@
     231
   ],
   "daily": {
+    "2026-06-05": 396,
     "2026-06-04": 169,
-    "2026-06-05": 277,
+    "2026-06-06": 32,
     "2026-06-03": 181,
-    "2026-05-07": 77,
     "2026-05-13": 43,
     "2026-05-14": 21,
     "2026-05-15": 150,
