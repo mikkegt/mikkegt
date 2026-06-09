@@ -31,6 +31,7 @@ var Misato = Engineer{
 [![Claude 101](https://img.shields.io/badge/Anthropic%20Education-Claude%20101-D97757)](https://verify.skilljar.com/c/h7i9yzocbmpn)
 [![Claude Code 101](https://img.shields.io/badge/Anthropic%20Education-Claude%20Code%20101-D97757)](https://verify.skilljar.com/c/hmku23v54ear)
 [![Introduction to Claude Cowork](https://img.shields.io/badge/Anthropic%20Education-Introduction%20to%20Claude%20Cowork-D97757)](https://verify.skilljar.com/c/6es7kn3o7ao3)
+[![Claude Code in Action](https://img.shields.io/badge/Anthropic%20Education-Claude%20Code%20in%20Action-D97757)](https://verify.skilljar.com/c/armsgfx7v43y)
 
 <!--
 **mikkegt/mikkegt** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
