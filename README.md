@@ -13,13 +13,13 @@ package main
 var Misato = Engineer{
 	Now: []string{
 		"🔮 AI Engineer — prompt design / RAG / LLM eval",
-		"📚 Re-learning CS @ 42 Tokyo — C/C++ systems programming (HTTP server)",
-		"🐏 Living in Claude Code as a daily driver (Skill author)",
+		"📚 Re-learning CS @ 42 Tokyo — C/C++ systems programming",
+		"🐏 Living in Claude Code as a daily driver",
 	},
 	Experience:  "25+ yrs — Dev / Infra / Data / Support / Security",
 	Domains:     []string{"Automotive", "Finance", "SI", "Security products"},
 	Languages:   []string{"C", "C++", "Go", "C#", "Python", "TypeScript", "Java", "SQL"},
-	Cloud:       []string{"Azure", "OCI", "AWS"},
+	Cloud:       []string{"OCI", "AWS"},
 	Data:        []string{"PostgreSQL", "Oracle", "Snowflake"},
 	Communities: []string{"Singularity Society 🚀", "Women Who Go Tokyo 🦫", "42 Tokyo 🎮"},
 	OSS:         []string{"ownplate — QA & dev (Vue / Tailwind / Firebase)"},
