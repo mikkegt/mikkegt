@@ -28,46 +28,46 @@
   <text x="20" y="38" font-size="19">🍰<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.4s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/></text>
   <text x="48" y="38" class="title">Claude Code Usage</text>
   <text x="20" y="58" class="subtitle">last 30 days · ~/.claude/projects</text>
-  <text x="20"  y="120" class="stat-num">368</text>
+  <text x="20"  y="120" class="stat-num">377</text>
   <text x="20"  y="142" class="stat-label">SESSIONS</text>
-  <text x="220" y="120" class="stat-num">5693</text>
+  <text x="220" y="120" class="stat-num">5743</text>
   <text x="220" y="142" class="stat-label">TOOL CALLS</text>
-  <text x="460" y="120" class="stat-num">48</text>
+  <text x="460" y="120" class="stat-num">47</text>
   <text x="460" y="142" class="stat-label">SKILLS</text>
   <text x="20" y="180" class="section">▮ TOP TOOLS</text>
-  <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="2.5s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">2816</text>
-<text x="20" y="221" class="row-label">Edit</text><rect x="200" y="209" height="14" width="123.9" class="bar"><animate attributeName="width" from="0" to="123.9" dur="2.5s" fill="freeze"/></rect><text x="333.9" y="221" class="row-value">872</text>
-<text x="20" y="247" class="row-label">Read</text><rect x="200" y="235" height="14" width="120.3" class="bar"><animate attributeName="width" from="0" to="120.3" dur="2.5s" fill="freeze"/></rect><text x="330.3" y="247" class="row-value">847</text>
-<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="45.9" class="bar"><animate attributeName="width" from="0" to="45.9" dur="2.5s" fill="freeze"/></rect><text x="255.9" y="273" class="row-value">323</text>
-<text x="20" y="299" class="row-label">ToolSearch</text><rect x="200" y="287" height="14" width="32.5" class="bar"><animate attributeName="width" from="0" to="32.5" dur="2.5s" fill="freeze"/></rect><text x="242.5" y="299" class="row-value">229</text>
+  <text x="20" y="195" class="row-label">Bash</text><rect x="200" y="183" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="2.5s" fill="freeze"/></rect><text x="610.0" y="195" class="row-value">2846</text>
+<text x="20" y="221" class="row-label">Read</text><rect x="200" y="209" height="14" width="121.2" class="bar"><animate attributeName="width" from="0" to="121.2" dur="2.5s" fill="freeze"/></rect><text x="331.2" y="221" class="row-value">862</text>
+<text x="20" y="247" class="row-label">Edit</text><rect x="200" y="235" height="14" width="120.0" class="bar"><animate attributeName="width" from="0" to="120.0" dur="2.5s" fill="freeze"/></rect><text x="330.0" y="247" class="row-value">854</text>
+<text x="20" y="273" class="row-label">Write</text><rect x="200" y="261" height="14" width="46.8" class="bar"><animate attributeName="width" from="0" to="46.8" dur="2.5s" fill="freeze"/></rect><text x="256.8" y="273" class="row-value">333</text>
+<text x="20" y="299" class="row-label">ToolSearch</text><rect x="200" y="287" height="14" width="32.9" class="bar"><animate attributeName="width" from="0" to="32.9" dur="2.5s" fill="freeze"/></rect><text x="242.9" y="299" class="row-value">234</text>
   <text x="20" y="336" class="section">▮ SKILLS</text>
   <text x="20" y="351" class="row-label">Custom</text><rect x="200" y="339" height="14" width="400.0" class="bar"><animate attributeName="width" from="0" to="400.0" dur="2.5s" fill="freeze"/></rect><text x="610.0" y="351" class="row-value">27</text>
-<text x="20" y="377" class="row-label">Plugin</text><rect x="200" y="365" height="14" width="311.1" class="bar"><animate attributeName="width" from="0" to="311.1" dur="2.5s" fill="freeze"/></rect><text x="521.1" y="377" class="row-value">21</text>
+<text x="20" y="377" class="row-label">Plugin</text><rect x="200" y="365" height="14" width="296.3" class="bar"><animate attributeName="width" from="0" to="296.3" dur="2.5s" fill="freeze"/></rect><text x="506.3" y="377" class="row-value">20</text>
   <text x="20" y="412" class="section">▮ ACTIVITY · hour of day (JST)</text>
-  <rect class="rhythm-bar" x="20.0" y="436.3" width="22.2" height="21.7"><animate attributeName="height" from="0" to="21.7" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="436.3" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="51.7" y="436.0" width="22.2" height="22.0"><animate attributeName="height" from="0" to="22.0" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="436.0" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="83.3" y="437.5" width="22.2" height="20.5"><animate attributeName="height" from="0" to="20.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="437.5" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="115.0" y="446.5" width="22.2" height="11.5"><animate attributeName="height" from="0" to="11.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="446.5" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="146.7" y="444.0" width="22.2" height="14.0"><animate attributeName="height" from="0" to="14.0" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="444.0" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="178.3" y="451.8" width="22.2" height="6.2"><animate attributeName="height" from="0" to="6.2" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="451.8" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="210.0" y="455.4" width="22.2" height="2.6"><animate attributeName="height" from="0" to="2.6" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="455.4" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="241.7" y="456.8" width="22.2" height="1.2"><animate attributeName="height" from="0" to="1.2" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="456.8" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="273.3" y="456.7" width="22.2" height="1.3"><animate attributeName="height" from="0" to="1.3" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="456.7" dur="2.5s" fill="freeze"/></rect>
+  <rect class="rhythm-bar" x="20.0" y="434.5" width="22.2" height="23.5"><animate attributeName="height" from="0" to="23.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="434.5" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="51.7" y="434.6" width="22.2" height="23.4"><animate attributeName="height" from="0" to="23.4" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="434.6" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="83.3" y="436.3" width="22.2" height="21.7"><animate attributeName="height" from="0" to="21.7" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="436.3" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="115.0" y="444.4" width="22.2" height="13.6"><animate attributeName="height" from="0" to="13.6" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="444.4" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="146.7" y="443.2" width="22.2" height="14.8"><animate attributeName="height" from="0" to="14.8" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="443.2" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="178.3" y="450.5" width="22.2" height="7.5"><animate attributeName="height" from="0" to="7.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="450.5" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="210.0" y="454.0" width="22.2" height="4.0"><animate attributeName="height" from="0" to="4.0" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="454.0" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="241.7" y="456.4" width="22.2" height="1.6"><animate attributeName="height" from="0" to="1.6" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="456.4" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="273.3" y="456.6" width="22.2" height="1.4"><animate attributeName="height" from="0" to="1.4" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="456.6" dur="2.5s" fill="freeze"/></rect>
 <rect class="rhythm-bar" x="305.0" y="457.5" width="22.2" height="0.5"><animate attributeName="height" from="0" to="0.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="457.5" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="336.7" y="454.5" width="22.2" height="3.5"><animate attributeName="height" from="0" to="3.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="454.5" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="368.3" y="452.6" width="22.2" height="5.4"><animate attributeName="height" from="0" to="5.4" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="452.6" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="400.0" y="446.5" width="22.2" height="11.5"><animate attributeName="height" from="0" to="11.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="446.5" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="431.7" y="442.0" width="22.2" height="16.0"><animate attributeName="height" from="0" to="16.0" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="442.0" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="463.3" y="438.8" width="22.2" height="19.2"><animate attributeName="height" from="0" to="19.2" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="438.8" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="495.0" y="433.6" width="22.2" height="24.4"><animate attributeName="height" from="0" to="24.4" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="433.6" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="526.7" y="439.2" width="22.2" height="18.8"><animate attributeName="height" from="0" to="18.8" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="439.2" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="336.7" y="454.3" width="22.2" height="3.7"><animate attributeName="height" from="0" to="3.7" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="454.3" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="368.3" y="452.2" width="22.2" height="5.8"><animate attributeName="height" from="0" to="5.8" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="452.2" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="400.0" y="445.9" width="22.2" height="12.1"><animate attributeName="height" from="0" to="12.1" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="445.9" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="431.7" y="441.9" width="22.2" height="16.1"><animate attributeName="height" from="0" to="16.1" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="441.9" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="463.3" y="438.5" width="22.2" height="19.5"><animate attributeName="height" from="0" to="19.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="438.5" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="495.0" y="434.2" width="22.2" height="23.8"><animate attributeName="height" from="0" to="23.8" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="434.2" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="526.7" y="438.3" width="22.2" height="19.7"><animate attributeName="height" from="0" to="19.7" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="438.3" dur="2.5s" fill="freeze"/></rect>
 <rect class="rhythm-bar" x="558.3" y="432.0" width="22.2" height="26.0"><animate attributeName="height" from="0" to="26.0" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="432.0" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="590.0" y="448.1" width="22.2" height="9.9"><animate attributeName="height" from="0" to="9.9" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="448.1" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="621.7" y="451.2" width="22.2" height="6.8"><animate attributeName="height" from="0" to="6.8" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="451.2" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="653.3" y="449.1" width="22.2" height="8.9"><animate attributeName="height" from="0" to="8.9" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="449.1" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="685.0" y="448.2" width="22.2" height="9.8"><animate attributeName="height" from="0" to="9.8" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="448.2" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="716.7" y="442.5" width="22.2" height="15.5"><animate attributeName="height" from="0" to="15.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="442.5" dur="2.5s" fill="freeze"/></rect>
-<rect class="rhythm-bar" x="748.3" y="444.7" width="22.2" height="13.3"><animate attributeName="height" from="0" to="13.3" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="444.7" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="590.0" y="447.6" width="22.2" height="10.4"><animate attributeName="height" from="0" to="10.4" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="447.6" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="621.7" y="451.5" width="22.2" height="6.5"><animate attributeName="height" from="0" to="6.5" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="451.5" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="653.3" y="448.8" width="22.2" height="9.2"><animate attributeName="height" from="0" to="9.2" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="448.8" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="685.0" y="447.9" width="22.2" height="10.1"><animate attributeName="height" from="0" to="10.1" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="447.9" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="716.7" y="441.8" width="22.2" height="16.2"><animate attributeName="height" from="0" to="16.2" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="441.8" dur="2.5s" fill="freeze"/></rect>
+<rect class="rhythm-bar" x="748.3" y="442.6" width="22.2" height="15.4"><animate attributeName="height" from="0" to="15.4" dur="2.5s" fill="freeze"/><animate attributeName="y" from="458" to="442.6" dur="2.5s" fill="freeze"/></rect>
 <text x="31.1" y="470" class="rhythm-label" text-anchor="middle">0</text>
 <text x="221.1" y="470" class="rhythm-label" text-anchor="middle">6</text>
 <text x="411.1" y="470" class="rhythm-label" text-anchor="middle">12</text>
